@@ -1,42 +1,42 @@
-// Write an interface named Student that accepts the following elements: firstName(string), lastName(string), age(number), and location(string)
-// Create two students, and create an array named studentsList containing the two variables
-// Using Vanilla Javascript, render a table and for each elements in the array, append a new row to the table
-// Each row should contain the first name of the student and the location
-
-// Define the Student interface
 interface Student {
-	firstName: string;
-	lastName: string;
-	age: number;
-	location: string;
-}
+    firstName: string,
+    lastName: string,
+    age: number,
+    location: string
+};
 
-// Create two student objects
-const firstStudent: Student = {
-	firstName: "Obed",
-	lastName: "Ehoneah",
-	age: 97,
-	location: "Accra"
-}
+const student1: Student = {
+    firstName: 'Abdulaziz',
+    lastName: 'Hussein',
+    age: 18,
+    location: 'Kenya'
+};
 
-const secondStudent: Student = {
-	firstName: "Frank",
-	lastName: "Ehoneah",
-	age: 79,
-	location: "Kumasi"
-}
+const student2: Student = {
+    firstName: 'teumay',
+    lastName: 'assefa',
+    age: 18,
+    location: 'New York'
+};
 
-// Create an array of students
-const studentsList = [firstStudent, secondStudent];
+const studentsList: Array<Student> = [student1, student2];
 
-const table = document.getElementById('studentTable') as HTMLTableElement;
+// Vanilla JavaScript to render a table
+const table = document.createElement('table');
+const headerRow = table.insertRow();
+const header1 = headerRow.insertCell(0);
+const header2 = headerRow.insertCell(1);
 
-// Create a new row for each student and append it to the table
+header1.textContent = 'First Name';
+header2.textContent = 'Location';
+
 studentsList.forEach((student) => {
-	const row = table.insertRow();
-	const firstNameCell = row.insertCell(0);
-	const locationCell = row.insertCell(1);
+  const row = table.insertRow();
+  const cell1 = row.insertCell(0);
+  const cell2 = row.insertCell(1);
 
-	firstNameCell.innerHTML = student.firstName;
-	locationCell.innerHTML = student.location;
-})
+  cell1.textContent = student.firstName;
+  cell2.textContent = student.location;
+});
+
+document.body.appendChild(table);
